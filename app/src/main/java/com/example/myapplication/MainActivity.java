@@ -3,17 +3,22 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -43,6 +48,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -64,11 +70,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     int viewLength; //keep track of view length
     SearchView searchView;
     TextView mealName;
+    DisplayMetrics displayMetrics;
+    int screen_height;
+    int screen_width;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //screen width and height
+        displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        screen_height = displayMetrics.heightPixels;
+        screen_width = displayMetrics.widthPixels;
 
         main = (RelativeLayout) findViewById(R.id.recipesLayout);
         //for search button
@@ -96,8 +111,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //For the category dropdown
         //get the spinner from the xml.
         dropdown = findViewById(R.id.categoryDropdown);
-        dropdown.setOnItemSelectedListener(this);
 
+        dropdown.setOnItemSelectedListener(this);
         //using Volley to access the api
         String categoryParams = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
         getCategoryResponse(categoryParams);
@@ -195,11 +210,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 hiddenLayout.setId(i + 1);
                 //imageButton
                 ImageButton imageButton = (ImageButton) hiddenLayout.findViewById(R.id.recipeImage);
-                //adjust image size
                 JSONObject obj = meals.getJSONObject(i);
                 String imagePath = obj.getString("strMealThumb");
                 Log.d("mealLogImage", imagePath);
-                Picasso.get().load(imagePath).into(imageButton);
+                Picasso.get().load(imagePath).resize((screen_width/2) - 100, (screen_width/2) - 100).centerInside().into(imageButton);
 
                 //textView
                 TextView textView = (TextView) hiddenLayout.findViewById(R.id.recipeName);
@@ -207,11 +221,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 String mealName = obj.getString("strMeal");
                 Log.d("mealLogName", mealName);
                 textView.setText(mealName);
-                textView.setTextSize(22.f);
-                textView.setTypeface(Typeface.DEFAULT , Typeface.BOLD);
-                textView.setTextColor(Color.WHITE);
-                textView.setPadding(0,20,0,20);
-                textView.setBackgroundColor(Color.MAGENTA);
+                textView.setWidth((screen_width/2) - 100);
+//                textView.setTextSize(22.f);
+//                textView.setTypeface(Typeface.DEFAULT , Typeface.BOLD);
+//                textView.setTextColor(Color.WHITE);
+//                textView.setPadding(0,20,0,20);
+//                textView.setBackgroundColor(Color.MAGENTA);
                 //position settings
                 RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
@@ -330,4 +345,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String meal = String.valueOf(mealName.getText());
         Toast.makeText(this, meal+" chosen!", Toast.LENGTH_LONG).show();
     }
+
 }
