@@ -57,6 +57,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.net.ssl.HttpsURLConnection;
 //path
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //For the meals
         //using Volley to access the api
-        String params = "https://www.themealdb.com/api/json/v1/1/search.php?f=e";
+        String params = "https://www.themealdb.com/api/json/v1/1/search.php?f="+getRandomChar();
         requestQueue = Volley.newRequestQueue(this);
         getMealsResponse(params);
 
@@ -255,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         } else {
             Toast.makeText(MainActivity.this, "NO RESULTS FOUND", Toast.LENGTH_LONG).show();
             dropdown.setSelection(0);
-            String params = "https://www.themealdb.com/api/json/v1/1/search.php?f=e";
+            String params = "https://www.themealdb.com/api/json/v1/1/search.php?f="+getRandomChar();
             showMealsByCategory(params);
         }
 
@@ -325,7 +326,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //For the meals
         //using Volley to access the api
         if(selectedCategory == "All Categories") {
-            params = "https://www.themealdb.com/api/json/v1/1/search.php?f=e";
+            params = "https://www.themealdb.com/api/json/v1/1/search.php?f="+getRandomChar();
         } else {
             params = "https://www.themealdb.com/api/json/v1/1/filter.php?c="+selectedCategory;
         }
@@ -344,6 +345,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         TextView mealName = (TextView) parent.findViewById(R.id.recipeName);
         String meal = String.valueOf(mealName.getText());
         Toast.makeText(this, meal+" chosen!", Toast.LENGTH_LONG).show();
+    }
+
+    public char getRandomChar() {
+        Random rnd = new Random();
+        char c = (char) ('a' + rnd.nextInt(26));
+        return c;
     }
 
 }
