@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -33,6 +34,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     RequestQueue requestQueue;
     int viewLength; //keep track of view length
     SearchView searchView;
+    TextView mealName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 hiddenLayout.setId(i + 1);
                 //imageButton
                 ImageButton imageButton = (ImageButton) hiddenLayout.findViewById(R.id.recipeImage);
+                //adjust image size
                 JSONObject obj = meals.getJSONObject(i);
                 String imagePath = obj.getString("strMealThumb");
                 Log.d("mealLogImage", imagePath);
@@ -210,11 +214,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 textView.setBackgroundColor(Color.MAGENTA);
                 //position settings
                 RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
                 if(i > 0) {
-                    lp.addRule(RelativeLayout.BELOW, i);
+                    //if i is one
+                    if(i == 1) {
+                        //place below the dropdown and to the right of the first picture
+                        lp.addRule(RelativeLayout.RIGHT_OF, i);
+                        lp.addRule(RelativeLayout.BELOW, R.id.categoryDropdown);
+                    } else if(i % 2 != 0) {//if i is odd
+                        //place layout to right of prev layout
+                        lp.addRule(RelativeLayout.RIGHT_OF, i);
+                        lp.addRule(RelativeLayout.BELOW, (i-1));
+                    } else {
+                        //if i is even, place under the layout on the left side
+                        lp.addRule(RelativeLayout.BELOW, (i-1));
+                    }
+//                    lp.addRule(RelativeLayout.BELOW, i);
                 } else {
                     lp.addRule(RelativeLayout.BELOW, R.id.categoryDropdown);
                 }
+
                 hiddenLayout.setLayoutParams(lp);
                 main.addView(hiddenLayout);
             }
@@ -302,5 +321,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void getMealName(View view) {
+        Log.d("mealLogView", view.toString());
+        ViewGroup parent = (ViewGroup) view.getParent();
+        TextView mealName = (TextView) parent.findViewById(R.id.recipeName);
+        String meal = String.valueOf(mealName.getText());
+        Toast.makeText(this, meal+" chosen!", Toast.LENGTH_LONG).show();
     }
 }
