@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
-
-    <uses-permission android:name="android.permission.INTERNET"/>
+    package="com.example.cook_at_home">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="COOK AT HOME"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/Theme.Cook_at_home">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Signin"></activity>
+        <activity android:name=".Signup"></activity>
+        <activity android:name=".FirstPage"></activity>
+        <activity android:name=".PreferencePage"></activity>
+        <activity android:name=".HomePage"></activity>
     </application>
 
 </manifest>
