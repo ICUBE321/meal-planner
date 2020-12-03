@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -36,6 +37,7 @@ public class Detail extends AppCompatActivity {
     DisplayMetrics displayMetrics;
     int screen_height;
     int screen_width;
+    String[] ingredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,8 @@ public class Detail extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         screen_height = displayMetrics.heightPixels;
         screen_width = displayMetrics.widthPixels;
+
+        ingredients = new String[20];
 
         mealView = findViewById(R.id.mealName);
         instructionsView = findViewById(R.id.instructions);
@@ -100,7 +104,6 @@ public class Detail extends AppCompatActivity {
             instructionsView.setMovementMethod(new ScrollingMovementMethod());
 
             //add textviews of ingredients
-            String[] ingredients = new String[20];
             String[] measure = new String[20];
 
             for(int i=0; i<20; i++) {
@@ -159,5 +162,11 @@ public class Detail extends AppCompatActivity {
             e.printStackTrace();
         }
         return a;
+    }
+
+    public void addIngredients(View view) {
+        Intent intent = new Intent(this, ShoppingList.class);
+//        intent.putExtra("mealIngredients", ingredients);
+        startActivity(intent);
     }
 }

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ALLERGIES"
+        android:textSize="24dp"
+        android:layout_marginLeft="100dp"></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="milk"
+            android:layout_marginRight="2dp"
+            android:id="@+id/al1"
+            android:onClick="btnAnimate"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="shellfish"
+            android:layout_marginRight="2dp"
+            android:id="@+id/al2"
+            android:onClick="btnAnimate"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="eggs"
+            android:layout_marginRight="2dp"
+            android:id="@+id/al3"
+            android:onClick="btnAnimate"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="peanuts"
+            android:onClick="btnAnimate"
+            android:id="@+id/al4"
+            android:layout_marginRight="2dp"></Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="soy"
+            android:onClick="btnAnimate"
+            android:id="@+id/al5"
+            android:layout_marginRight="2dp"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:onClick="btnAnimate"
+            android:id="@+id/al6"
+            android:text="wheat"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:onClick="btnAnimate"
+            android:id="@+id/al7"
+            android:text="treenuts"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:onClick="btnAnimate"
+            android:id="@+id/al8"
+            android:text="fish"></Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:onClick="btnAnimate"
+            android:id="@+id/al9"
+            android:text="avocado"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:onClick="btnAnimate"
+            android:id="@+id/al10"
+            android:text="kiwi fruit"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:onClick="btnAnimate"
+            android:id="@+id/al11"
+            android:text="passion fruit"></Button>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSubmit3"
+        android:text="Submit"
+        android:onClick="addbtnAllergies"></Button>
+
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent">
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recipesLayout">
+
+        <TextView
+            android:id="@+id/mealTitle"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:baselineAligned="false"
+            android:paddingTop="10dp"
+            android:text="MEALS"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="39dp"
+            android:layout_marginEnd="0dp"
+            android:iconifiedByDefault="true"
+            android:queryHint="Search for meal..." />
+
+        <Spinner
+            android:id="@+id/categoryDropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searchView"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="31dp"
+            android:dropDownWidth="match_parent"
+            android:spinnerMode="dropdown" />
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,45 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fillViewport="true"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/parent">
-    <RelativeLayout android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recipesLayout">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@color/green">
 
-        <TextView
-            android:id="@+id/mealTitle"
-            android:layout_width="match_parent"
-            android:layout_height="37dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:baselineAligned="false"
-            android:paddingTop="10dp"
-            android:text="MEALS"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:layout_marginTop="250dp"
+        android:textSize="24dp"
+        android:paddingLeft="100dp"
+        android:text="COOK AT HOME"
 
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="39dp"
-            android:layout_marginEnd="0dp"
-            android:iconifiedByDefault="true"
-            android:queryHint="Search for meal..." />
+         />
 
-        <Spinner
-            android:id="@+id/categoryDropdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/searchView"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="31dp"
-            android:dropDownWidth="match_parent"
-            android:spinnerMode="dropdown" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnsignup"
+        android:text="Sign Up"
+        android:onClick="viewSignup"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="50dp" />
 
-    </RelativeLayout>
-</ScrollView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnsignin"
+        android:text="Sign In"
+        android:onClick="viewSignin"
+        android:layout_marginLeft="150dp" />
+
+</LinearLayout>
