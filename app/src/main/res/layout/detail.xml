@@ -39,27 +39,21 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.049">
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <LinearLayout
             android:id="@+id/ingredientsContainer"
-            android:layout_width="211dp"
-            android:layout_height="323dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instructions"
-            app:layout_constraintVertical_bias="0.0">
-
-        </LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="61dp"
+            android:orientation="vertical" />
     </ScrollView>
 
     <TextView
