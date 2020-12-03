@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -60,8 +61,6 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.net.ssl.HttpsURLConnection;
-//path
-//https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -70,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     RequestQueue requestQueue;
     int viewLength; //keep track of view length
     SearchView searchView;
-    TextView mealName;
     DisplayMetrics displayMetrics;
     int screen_height;
     int screen_width;
@@ -86,9 +84,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         screen_height = displayMetrics.heightPixels;
         screen_width = displayMetrics.widthPixels;
 
-        main = (RelativeLayout) findViewById(R.id.recipesLayout);
+        main = findViewById(R.id.recipesLayout);
         //for search button
-        searchView = (SearchView) findViewById(R.id.searchView);
+        searchView = findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -223,11 +221,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 Log.d("mealLogName", mealName);
                 textView.setText(mealName);
                 textView.setWidth((screen_width/2) - 100);
-//                textView.setTextSize(22.f);
-//                textView.setTypeface(Typeface.DEFAULT , Typeface.BOLD);
-//                textView.setTextColor(Color.WHITE);
-//                textView.setPadding(0,20,0,20);
-//                textView.setBackgroundColor(Color.MAGENTA);
                 //position settings
                 RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
@@ -344,7 +337,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ViewGroup parent = (ViewGroup) view.getParent();
         TextView mealName = (TextView) parent.findViewById(R.id.recipeName);
         String meal = String.valueOf(mealName.getText());
-        Toast.makeText(this, meal+" chosen!", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, Detail.class);
+        intent.putExtra("mealName", meal);
+        startActivity(intent);
+//        Toast.makeText(this, meal+" chosen!", Toast.LENGTH_LONG).show();
     }
 
     public char getRandomChar() {
