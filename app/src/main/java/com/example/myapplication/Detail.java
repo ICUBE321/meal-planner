@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -17,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,15 +32,26 @@ public class Detail extends AppCompatActivity {
     RequestQueue requestQueue;
     TextView instructionsView;
     LinearLayout scrollView;
+    ImageView imageView;
+    DisplayMetrics displayMetrics;
+    int screen_height;
+    int screen_width;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail);
 
+        //screen width and height
+        displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        screen_height = displayMetrics.heightPixels;
+        screen_width = displayMetrics.widthPixels;
+
         mealView = findViewById(R.id.mealName);
         instructionsView = findViewById(R.id.instructions);
         scrollView = findViewById(R.id.ingredientsContainer);
+        imageView = findViewById(R.id.mealImage);
         Intent intent = getIntent();
         String mealName = intent.getStringExtra("mealName");
         mealView.setText(mealName);
@@ -77,6 +92,9 @@ public class Detail extends AppCompatActivity {
         if(json != null) {
             JSONArray meals = jsonHelperGetJSONArray(JsonObject, "meals");
             JSONObject obj = meals.getJSONObject(0);
+            String imagePath = obj.getString("strMealThumb");
+//            Picasso.get().load(imagePath).resize((screen_width/2) - 100, (screen_width/2) - 100).centerInside().into(imageButton);
+            Picasso.get().load(imagePath).into(imageView);
             String recipe = obj.getString("strInstructions");
             instructionsView.setText(recipe);
             instructionsView.setMovementMethod(new ScrollingMovementMethod());

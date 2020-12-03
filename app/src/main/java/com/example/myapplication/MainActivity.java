@@ -127,9 +127,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 try {
                     ParseMealsJSON(response);
                 } catch (JSONException e) {
-//                    for(int j=0; j<viewLength; j++){
-//                        main.removeView(findViewById(j + 1));
-//                    }
                     Toast.makeText(MainActivity.this, "NO RESULTS FOUND", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
