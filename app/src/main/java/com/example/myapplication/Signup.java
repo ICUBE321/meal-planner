@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,6 +25,8 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
         db = new DatabaseHelper(Signup.this, null, null, 1);
+//        boolean result = deleteDatabase("cookathome.db");
+//        Log.d("databaseStatus", "" +result);
         fname = (EditText) findViewById(R.id.txtfname);
         lname = (EditText) findViewById(R.id.txtlname);
         uname = (EditText) findViewById(R.id.txtuname);

@@ -38,11 +38,15 @@ public class Detail extends AppCompatActivity {
     int screen_height;
     int screen_width;
     String[] ingredients;
+    DatabaseHelper db;
+    String mealName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail);
+
+        db = new DatabaseHelper(Detail.this, null, null, 1);
 
         //screen width and height
         displayMetrics = new DisplayMetrics();
@@ -57,7 +61,7 @@ public class Detail extends AppCompatActivity {
         scrollView = findViewById(R.id.ingredientsContainer);
         imageView = findViewById(R.id.mealImage);
         Intent intent = getIntent();
-        String mealName = intent.getStringExtra("mealName");
+        mealName = intent.getStringExtra("mealName");
         mealView.setText(mealName);
         requestQueue = Volley.newRequestQueue(this);
 
@@ -112,7 +116,7 @@ public class Detail extends AppCompatActivity {
                 String indexMeasure = "strMeasure"+(i+1);
                 measure[i] = obj.getString(indexMeasure);
 
-                if(ingredients[i] == null || ingredients[i] == "") {
+                if(ingredients[i].equals(null) || ingredients[i].equals("") || ingredients[i].equals("null")) {
 
                 } else {
                     TextView ingredient = new TextView(this);
@@ -164,9 +168,20 @@ public class Detail extends AppCompatActivity {
         return a;
     }
 
-    public void addIngredients(View view) {
-        Intent intent = new Intent(this, ShoppingList.class);
-//        intent.putExtra("mealIngredients", ingredients);
+//    public void addIngredients(View view) {
+//        for(int i=0; i < ingredients.length; i++) {
+//            if(ingredients[i].equals(null) || ingredients[i].equals("") || ingredients[i].equals("null")) {
+//            } else {
+//                db.addIngredientToDatabase(ingredients[i], mealName);
+//            }
+//        }
+//        Intent intent = new Intent(this, ShoppingList.class);
+////        intent.putExtra("mealIngredients", ingredients);
+//        startActivity(intent);
+//    }
+
+    public void goBack(View view) {
+        Intent intent = new Intent(this, Meals.class);
         startActivity(intent);
     }
 }

@@ -2,14 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/green">
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Username"
-        android:layout_marginTop="250dp"></TextView>
+        android:layout_marginTop="250dp" />
 
     <EditText
         android:layout_width="match_parent"
