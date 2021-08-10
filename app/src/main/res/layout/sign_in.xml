@@ -15,13 +15,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/textusername"
         android:paddingTop="5dp"
-        android:hint="username"></EditText>
+        android:hint="username" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Password"
-        android:paddingTop="50dp"></TextView>
+        android:paddingTop="50dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -29,18 +29,15 @@
         android:id="@+id/textpassword"
         android:paddingTop="5dp"
         android:hint="password"
-        android:inputType="textPassword"></EditText>
+        android:inputType="textPassword" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
         android:id="@+id/btnSubmit1"
-        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="50dp"
-        android:onClick="usersignin"></Button>
-
-
-
+        android:onClick="usersignin" />
 
 </LinearLayout>

@@ -8,46 +8,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="First Name"></TextView>
+        android:text="First Name" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtfname"
         android:hint="first name"
-        android:paddingTop="5dp"></EditText>
+        android:paddingTop="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="Last Name"></TextView>
+        android:text="Last Name" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtlname"
         android:hint="last name"
-        android:paddingTop="5dp"></EditText>
+        android:paddingTop="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="UserName"></TextView>
+        android:text="UserName" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtuname"
         android:hint="user name"
-        android:paddingTop="5dp"></EditText>
+        android:paddingTop="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="Password"></TextView>
+        android:text="Password" />
 
     <EditText
         android:layout_width="match_parent"
@@ -55,31 +55,29 @@
         android:id="@+id/txtpword"
         android:hint="password"
         android:paddingTop="5dp"
-        android:inputType="textPassword"></EditText>
+        android:inputType="textPassword" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="Email"></TextView>
+        android:text="Email" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtemail"
         android:hint="email"
-        android:paddingTop="5dp"></EditText>
+        android:paddingTop="5dp" />
 
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:text="Submit"
         android:id="@+id/btnSubmit2"
-        android:onClick="addNewUser"></Button>
-
-
+        android:onClick="addNewUser" />
 
 </LinearLayout>
